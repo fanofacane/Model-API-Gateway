@@ -1,0 +1,216 @@
+package com.sky.modelapigateway.service.apikey;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.sky.modelapigateway.domain.apikey.ApiKeyEntity;
+import com.sky.modelapigateway.domain.apikey.ApiKeyStatus;
+import com.sky.modelapigateway.exception.ApiKeyException;
+import com.sky.modelapigateway.exception.EntityNotFoundException;
+import com.sky.modelapigateway.mapper.ApikeyMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import java.security.SecureRandom;
+import java.time.LocalDateTime;
+import java.util.List;
+
+/**
+ * API Key 领域服务
+ * 处理 API Key 相关的复杂业务逻辑
+ * 
+ * @author fanofacane
+ * @since 1.0.0
+ */
+@Service
+public class ApiKeyDomainService {
+
+    private static final Logger logger = LoggerFactory.getLogger(ApiKeyDomainService.class);
+
+    private final ApikeyMapper apikeyMapper;
+    private final SecureRandom secureRandom;
+
+    // API Key 配置
+    private static final String API_KEY_PREFIX = "gw_";
+    private static final int API_KEY_LENGTH = 32;
+    private static final String API_KEY_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    public ApiKeyDomainService(ApikeyMapper apikeyMapper) {
+        this.apikeyMapper = apikeyMapper;
+        this.secureRandom = new SecureRandom();
+    }
+
+    /**
+     * 生成 apiKey
+     */
+    public ApiKeyEntity generateApiKey(String description, LocalDateTime expiresAt) {
+        logger.info("生成 API Key，描述: {}，过期时间: {}", description, expiresAt);
+        
+        String apiKeyValue = generateUniqueApiKeyValue();
+        ApiKeyEntity apiKey = new ApiKeyEntity(apiKeyValue, description, expiresAt);
+
+        apikeyMapper.insert(apiKey);
+        logger.info("成功生成 API Key，ID: {}", apiKey.getId());
+        return apiKey;
+    }
+
+    /**
+     * 根据 id 获取 apiKey
+     */
+    public ApiKeyEntity getById(String id) {
+        ApiKeyEntity apiKey = apikeyMapper.selectById(id);
+        if (apiKey == null) {
+            throw new EntityNotFoundException("API Key 不存在，ID: " + id);
+        }
+        return apiKey;
+    }
+
+    /**
+     * 获取 apiKey 列表
+     */
+    public List<ApiKeyEntity> findAll() {
+        LambdaQueryWrapper<ApiKeyEntity> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.orderByDesc(ApiKeyEntity::getCreatedAt);
+        return apikeyMapper.selectList(queryWrapper);
+    }
+
+    /**
+     * 修改 apiKey，只能修改描述和过期时间
+     */
+    public boolean updateApiKey(String id, String description, LocalDateTime expiresAt) {
+        LambdaUpdateWrapper<ApiKeyEntity> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.eq(ApiKeyEntity::getId, id);
+        
+        if (description != null) {
+            updateWrapper.set(ApiKeyEntity::getDescription, description);
+        }
+        if (expiresAt != null) {
+            updateWrapper.set(ApiKeyEntity::getExpiresAt, expiresAt);
+        }
+        
+        // 如果没有任何字段需要更新，直接返回false
+        if (description == null && expiresAt == null) {
+            return false;
+        }
+        
+        int updatedRows = apikeyMapper.update(null, updateWrapper);
+        boolean success = updatedRows > 0;
+        
+        if (success) {
+            logger.info("修改 API Key 成功，ID: {}", id);
+        }
+        
+        return success;
+    }
+
+    /**
+     * 修改 apiKey 状态
+     */
+    public boolean updateStatus(String id, ApiKeyStatus status) {
+        LambdaUpdateWrapper<ApiKeyEntity> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.eq(ApiKeyEntity::getId, id);
+        updateWrapper.set(ApiKeyEntity::getStatus, status);
+        
+        int updatedRows = apikeyMapper.update(null, updateWrapper);
+        boolean success = updatedRows > 0;
+        
+        if (success) {
+            logger.info("修改 API Key 状态成功，ID: {}，新状态: {}", id, status);
+        }
+        
+        return success;
+    }
+
+    /**
+     * 删除 apiKey
+     */
+    public boolean deleteById(String id) {
+        int deletedRows = apikeyMapper.deleteById(id);
+        boolean success = deletedRows > 0;
+        
+        if (success) {
+            logger.info("删除 API Key 成功，ID: {}", id);
+        }
+        
+        return success;
+    }
+
+    /**
+     * 根据 apiKey 查看状态是否可用
+     */
+    public boolean isUsable(String apiKeyValue) {
+        LambdaQueryWrapper<ApiKeyEntity> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(ApiKeyEntity::getApiKeyValue, apiKeyValue);
+        
+        ApiKeyEntity apiKey = apikeyMapper.selectOne(queryWrapper);
+        if (apiKey == null) {
+            return false;
+        }
+        
+        return apiKey.isUsable();
+    }
+
+
+    /**
+     * 校验API Key是否有效（用于拦截器）
+     */
+    public boolean isValidApiKey(String apiKeyValue) {
+        return isUsable(apiKeyValue);
+    }
+
+    private String generateUniqueApiKeyValue() {
+        String apiKeyValue;
+        int attempts = 0;
+        int maxAttempts = 10;
+        
+        do {
+            apiKeyValue = generateApiKeyValue();
+            attempts++;
+            
+            if (attempts > maxAttempts) {
+                logger.error("生成唯一 API Key 值失败，尝试次数超过最大限制: {}", maxAttempts);
+                throw ApiKeyException.generationFailed("尝试次数超过最大限制");
+            }
+            
+        } while (!isApiKeyValueUnique(apiKeyValue));
+        
+        return apiKeyValue;
+    }
+
+    private String generateApiKeyValue() {
+        StringBuilder apiKey = new StringBuilder(API_KEY_PREFIX);
+        
+        for (int i = 0; i < API_KEY_LENGTH; i++) {
+            int randomIndex = secureRandom.nextInt(API_KEY_CHARS.length());
+            apiKey.append(API_KEY_CHARS.charAt(randomIndex));
+        }
+        
+        return apiKey.toString();
+    }
+
+    private boolean isApiKeyValueUnique(String apiKeyValue) {
+        LambdaQueryWrapper<ApiKeyEntity> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(ApiKeyEntity::getApiKeyValue, apiKeyValue);
+        return apikeyMapper.selectCount(queryWrapper) == 0;
+    }
+
+    // 使用 apiKey：修改 apiKey 的状态为激活
+    public void useApiKey(String apiKeyValue) {
+        LambdaUpdateWrapper<ApiKeyEntity> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.eq(ApiKeyEntity::getApiKeyValue, apiKeyValue);
+        updateWrapper.set(ApiKeyEntity::getStatus, ApiKeyStatus.ACTIVE);
+        apikeyMapper.update(null, updateWrapper);
+    }
+
+    public void createApiKey(String defaultApiKey) {
+        ApiKeyEntity apiKey = new ApiKeyEntity(defaultApiKey, "默认的", null);
+        apikeyMapper.insert(apiKey);
+    }
+
+    public boolean existApiKey(String apiKeyValue) {
+        LambdaQueryWrapper<ApiKeyEntity> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(ApiKeyEntity::getApiKeyValue, apiKeyValue);
+        ApiKeyEntity apiKey = apikeyMapper.selectOne(queryWrapper);
+        return apiKey != null;
+    }
+}

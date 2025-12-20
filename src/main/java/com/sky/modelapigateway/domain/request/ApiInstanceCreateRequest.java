@@ -1,0 +1,83 @@
+package com.sky.modelapigateway.domain.request;
+
+import com.sky.modelapigateway.enums.ApiType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+
+import java.util.Map;
+
+/**
+ * API实例创建请求
+ * 
+ * @author fanofacane
+ * @since 1.0.0
+ */
+public class ApiInstanceCreateRequest {
+
+    private String userId;
+
+    @NotBlank(message = "API标识符不能为空")
+    private String apiIdentifier;
+
+    @NotNull(message = "API类型不能为空")
+    private ApiType apiType;
+
+    @NotBlank(message = "业务ID不能为空")
+    private String businessId;
+
+    private Map<String, Object> routingParams;
+
+    private Map<String, Object> metadata;
+
+    public ApiInstanceCreateRequest() {}
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getApiIdentifier() {
+        return apiIdentifier;
+    }
+
+    public void setApiIdentifier(String apiIdentifier) {
+        this.apiIdentifier = apiIdentifier;
+    }
+
+    public ApiType getApiType() {
+        return apiType;
+    }
+
+    public void setApiType(ApiType apiType) {
+        this.apiType = apiType;
+    }
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
+    }
+
+    public Map<String, Object> getRoutingParams() {
+        return routingParams;
+    }
+
+    public void setRoutingParams(Map<String, Object> routingParams) {
+        this.routingParams = routingParams;
+    }
+
+    public Map<String, Object> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, Object> metadata) {
+        this.metadata = metadata;
+    }
+} 

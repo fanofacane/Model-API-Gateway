@@ -1,0 +1,109 @@
+package com.sky.modelapigateway.domain;
+
+
+import com.sky.modelapigateway.enums.ApiInstanceStatus;
+import com.sky.modelapigateway.enums.ApiType;
+
+import java.util.Map;
+/**
+ * API实例数据传输对象
+ * @author fanofacane
+ * @since 1.0.0
+ */
+public class ApiInstanceDTO {
+
+    private String id;
+    private String projectId;
+    private String projectName;  // 新增：项目名称
+    private String userId;
+    private String apiIdentifier;
+    private ApiType apiType;
+    private String businessId;
+    private Map<String, Object> routingParams;
+    private ApiInstanceStatus status;
+    private Map<String, Object> metadata;
+
+    public ApiInstanceDTO() {}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getApiIdentifier() {
+        return apiIdentifier;
+    }
+
+    public void setApiIdentifier(String apiIdentifier) {
+        this.apiIdentifier = apiIdentifier;
+    }
+
+    public ApiType getApiType() {
+        return apiType;
+    }
+
+    public void setApiType(ApiType apiType) {
+        this.apiType = apiType;
+    }
+
+    public String getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(String businessId) {
+        this.businessId = businessId;
+    }
+
+    public Map<String, Object> getRoutingParams() {
+        return routingParams;
+    }
+
+    public void setRoutingParams(Map<String, Object> routingParams) {
+        this.routingParams = routingParams;
+    }
+
+    public ApiInstanceStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ApiInstanceStatus status) {
+        this.status = status;
+    }
+
+    public Map<String, Object> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, Object> metadata) {
+        this.metadata = metadata;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+
+}
