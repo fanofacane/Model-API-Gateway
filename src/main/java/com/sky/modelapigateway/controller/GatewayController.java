@@ -2,6 +2,7 @@ package com.sky.modelapigateway.controller;
 
 import com.sky.modelapigateway.domain.ApiInstanceDTO;
 import com.sky.modelapigateway.domain.Result;
+import com.sky.modelapigateway.domain.request.ReportResultRequest;
 import com.sky.modelapigateway.domain.request.SelectInstanceRequest;
 import com.sky.modelapigateway.service.select.SelectionService;
 import com.sky.modelapigateway.tool.ApiContext;
@@ -51,6 +52,23 @@ public class GatewayController {
         logger.info("成功选择API实例，businessId: {}, instanceId: {}", 
                 selectedInstance.getBusinessId(), selectedInstance.getId());
         return Result.success("API实例选择成功", selectedInstance);
+    }
+    /**
+     * 上报API调用结果
+     * 用于更新实例指标和健康状态
+     * 需要API Key校验
+     */
+    @PostMapping("/report-result")
+    public Result<Void> reportResult(@Valid @RequestBody ReportResultRequest request) {
+        logger.info("接收到调用结果上报: 实例ID={}, 成功={}, 延迟={}ms",
+                request.getInstanceId(), request.getSuccess(), request.getLatencyMs());
+
+        String projectId = ApiContext.getProjectId();
+
+        selectionService.reportCallResult(request,projectId);
+
+        logger.debug("调用结果上报成功");
+        return Result.success("调用结果上报成功", null);
     }
 
 } 

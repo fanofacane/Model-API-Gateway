@@ -15,7 +15,7 @@ import java.util.Map;
  * 成功率优先负载均衡策略
  * 优先选择成功率最高的实例，适用于对稳定性要求高的场景
  * 
- * @author xhy
+ * @author fanofacane
  * @since 1.0.0
  */
 @Component
@@ -44,32 +44,17 @@ public class SuccessRateFirstStrategy implements LoadBalancingStrategy {
     @Override
     public ApiInstanceEntity selectInstance(List<ApiInstanceEntity> candidates,
                                             Map<String, InstanceMetricsEntity> metricsMap) {
-        
-        if (candidates.isEmpty()) {
-            throw new IllegalArgumentException("候选实例列表不能为空");
-        }
 
-        // 过滤掉被熔断的实例
-        List<ApiInstanceEntity> availableInstances = candidates.stream()
-                .filter(instance -> {
-                    InstanceMetricsEntity metrics = metricsMap.get(instance.getId());
-                    return metrics == null || !metrics.isCircuitBreakerOpen();
-                })
-                .toList();
-
-        if (availableInstances.isEmpty()) {
-            logger.warn("所有实例都被熔断，返回第一个实例");
-            return candidates.get(0);
-        }
 
         // 按成功率排序，选择成功率最高的实例
-        ApiInstanceEntity selected = availableInstances.stream()
+        ApiInstanceEntity selected = candidates.stream()
                 .max(Comparator.comparingDouble(instance -> getSuccessRate(instance, metricsMap)))
-                .orElse(availableInstances.get(0));
+                .orElse(candidates.getFirst());
 
         double successRate = getSuccessRate(selected, metricsMap);
-        logger.debug("成功率优先策略选择实例: businessId={}, successRate={:.3f}", 
+        String logMsg = String.format("延迟优先策略选择实例: businessId=%s, averageLatency=%.1fms",
                 selected.getBusinessId(), successRate);
+        logger.debug(logMsg);
         
         return selected;
     }
@@ -90,10 +75,8 @@ public class SuccessRateFirstStrategy implements LoadBalancingStrategy {
      */
     private double getSuccessRate(ApiInstanceEntity instance, Map<String, InstanceMetricsEntity> metricsMap) {
         InstanceMetricsEntity metrics = metricsMap.get(instance.getId());
-        if (metrics == null) {
-            // 冷启动实例，给予默认成功率
-            return COLD_START_DEFAULT_SUCCESS_RATE;
-        }
+        if (metrics == null) return COLD_START_DEFAULT_SUCCESS_RATE;
+
         return metrics.getSuccessRate();
     }
 
@@ -102,9 +85,8 @@ public class SuccessRateFirstStrategy implements LoadBalancingStrategy {
      */
     private long getTotalRequests(ApiInstanceEntity instance, Map<String, InstanceMetricsEntity> metricsMap) {
         InstanceMetricsEntity metrics = metricsMap.get(instance.getId());
-        if (metrics == null) {
-            return 0;
-        }
+        if (metrics == null) return 0;
+
         return metrics.getSuccessCount() + metrics.getFailureCount();
     }
 } 

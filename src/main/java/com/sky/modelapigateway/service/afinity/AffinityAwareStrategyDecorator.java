@@ -44,9 +44,7 @@ public class AffinityAwareStrategyDecorator {
             Map<String, InstanceMetricsEntity> metricsMap,
             LoadBalancingStrategy strategy,
             AffinityContext affinityContext) {
-
-        affinityContext = null;
-        // 1. 如果没有亲和性要求，直接使用负载均衡策略
+        // todo 1. 暂时不考虑亲和性，直接走负载均衡
         if (affinityContext == null || !affinityContext.isValid()) {
             logger.debug("无亲和性要求，直接使用负载均衡策略: {}", strategy.getClass().getSimpleName());
             return strategy.selectInstance(candidates, metricsMap);
@@ -54,9 +52,7 @@ public class AffinityAwareStrategyDecorator {
 
         // 2. 检查是否有现有的亲和性绑定
         String boundInstanceId = affinityService.getBoundInstance(
-                affinityContext.getAffinityType(),
-                affinityContext.getAffinityKey()
-        );
+                affinityContext.getAffinityType(), affinityContext.getAffinityKey());
 
         if (boundInstanceId != null) {
             // 3. 查找绑定的实例是否在候选列表中且健康
@@ -64,14 +60,10 @@ public class AffinityAwareStrategyDecorator {
 
             if (boundInstance != null) {
                 // 绑定的实例可用，刷新绑定并返回
-                affinityService.refreshBinding(
-                        affinityContext.getAffinityType(),
-                        affinityContext.getAffinityKey(),
-                        boundInstanceId
-                );
+                affinityService.refreshBinding(affinityContext.getAffinityType(),
+                        affinityContext.getAffinityKey(), boundInstanceId);
 
-                logger.debug("使用亲和性绑定实例: {} -> {}",
-                        affinityContext.getBindingKey(), boundInstanceId);
+                logger.debug("使用亲和性绑定实例: {} -> {}", affinityContext.getBindingKey(), boundInstanceId);
                 return boundInstance;
             } else {
                 // 绑定的实例不可用
@@ -86,14 +78,10 @@ public class AffinityAwareStrategyDecorator {
         ApiInstanceEntity selectedInstance = strategy.selectInstance(candidates, metricsMap);
 
         if (selectedInstance != null) {
-            affinityService.createBinding(
-                    affinityContext.getAffinityType(),
-                    affinityContext.getAffinityKey(),
-                    selectedInstance.getId()
-            );
+            affinityService.createBinding(affinityContext.getAffinityType(),
+                    affinityContext.getAffinityKey(), selectedInstance.getId());
 
-            logger.info("创建新的亲和性绑定: {} -> {}",
-                    affinityContext.getBindingKey(), selectedInstance.getId());
+            logger.info("创建新的亲和性绑定: {} -> {}", affinityContext.getBindingKey(), selectedInstance.getId());
         }
 
         return selectedInstance;

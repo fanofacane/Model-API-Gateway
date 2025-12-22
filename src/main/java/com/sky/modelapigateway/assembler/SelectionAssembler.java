@@ -5,6 +5,7 @@ import com.sky.modelapigateway.domain.command.CallResultCommand;
 import com.sky.modelapigateway.domain.command.InstanceSelectionCommand;
 import com.sky.modelapigateway.domain.request.ReportResultRequest;
 import com.sky.modelapigateway.domain.request.SelectInstanceRequest;
+import com.sky.modelapigateway.enums.LoadBalancingType;
 import org.springframework.stereotype.Component;
 
 
@@ -21,10 +22,9 @@ public class SelectionAssembler {
     /**
      * 将SelectInstanceRequest转换为InstanceSelectionCommand
      */
-    public static InstanceSelectionCommand toCommand(SelectInstanceRequest request, String projectId) {
-        if (request == null) {
-            return null;
-        }
+    public static InstanceSelectionCommand toCommand(SelectInstanceRequest request,
+                                                     String projectId, LoadBalancingType strategy) {
+        if (request == null) return null;
 
         // 构建亲和性上下文
         AffinityContext affinityContext = null;
@@ -40,7 +40,7 @@ public class SelectionAssembler {
                 request.getUserId(),
                 request.getApiIdentifier(),
                 request.getApiType(),
-                null, // 使用默认负载均衡策略
+                strategy,
                 affinityContext
         );
     }

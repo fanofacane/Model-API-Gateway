@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * 轮询负载均衡策略
  * 简单轮询选择实例，适用于实例性能相近的场景
  * 
- * @author xhy
+ * @author fanofacane
  * @since 1.0.0
  */
 @Component
@@ -43,31 +43,11 @@ public class RoundRobinStrategy implements LoadBalancingStrategy {
     @Override
     public ApiInstanceEntity selectInstance(List<ApiInstanceEntity> candidates,
                                             Map<String, InstanceMetricsEntity> metricsMap) {
-        
-        if (candidates.isEmpty()) {
-            throw new IllegalArgumentException("候选实例列表不能为空");
-        }
-
-        // 过滤掉被熔断的实例
-        List<ApiInstanceEntity> availableInstances = candidates.stream()
-                .filter(instance -> {
-                    InstanceMetricsEntity metrics = metricsMap.get(instance.getId());
-                    return metrics == null || !metrics.isCircuitBreakerOpen();
-                })
-                .toList();
-
-        if (availableInstances.isEmpty()) {
-            logger.warn("所有实例都被熔断，返回第一个实例");
-            return candidates.get(0);
-        }
-
         // 轮询选择
-        long index = counter.getAndIncrement() % availableInstances.size();
-        ApiInstanceEntity selected = availableInstances.get((int) index);
+        long index = counter.getAndIncrement() % candidates.size();
+        ApiInstanceEntity selected = candidates.get((int) index);
         
-        logger.debug("轮询策略选择实例: businessId={}, 当前计数={}", 
-                selected.getBusinessId(), counter.get());
-        
+        logger.debug("轮询策略选择实例: businessId={}, 当前计数={}", selected.getBusinessId(), counter.get());
         return selected;
     }
 

@@ -2,6 +2,11 @@ package com.sky.modelapigateway.service.apiInstance.Impl;
 
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sky.modelapigateway.assembler.ApiInstanceAssembler;
+import com.sky.modelapigateway.domain.ApiInstanceDTO;
+import com.sky.modelapigateway.domain.request.ApiInstanceCreateRequest;
+import com.sky.modelapigateway.domain.request.ApiInstanceUpdateRequest;
+import com.sky.modelapigateway.enums.ApiType;
 import com.sky.modelapigateway.service.afinity.AffinityAwareStrategyDecorator;
 import com.sky.modelapigateway.strategy.LoadBalancingStrategy;
 import com.sky.modelapigateway.strategy.LoadBalancingStrategyFactory;
@@ -9,14 +14,15 @@ import com.sky.modelapigateway.domain.Instance.InstanceMetricsEntity;
 import com.sky.modelapigateway.domain.apikey.ApiInstanceEntity;
 import com.sky.modelapigateway.domain.command.InstanceSelectionCommand;
 import com.sky.modelapigateway.enums.ApiInstanceStatus;
-import com.sky.modelapigateway.enums.LoadBalancingType;
 import com.sky.modelapigateway.exception.BusinessException;
 import com.sky.modelapigateway.mapper.ApiInstanceMapper;
 import com.sky.modelapigateway.service.apiInstance.ApiInstanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,7 +31,9 @@ public class ApiInstanceServiceImpl extends ServiceImpl<ApiInstanceMapper, ApiIn
     private static final Logger logger = LoggerFactory.getLogger(ApiInstanceServiceImpl.class);
     private final LoadBalancingStrategyFactory strategyFactory;
     private final AffinityAwareStrategyDecorator affinityDecorator;
-    public ApiInstanceServiceImpl(LoadBalancingStrategyFactory strategyFactory, AffinityAwareStrategyDecorator affinityDecorator) {
+
+    public ApiInstanceServiceImpl(LoadBalancingStrategyFactory strategyFactory,
+                                  AffinityAwareStrategyDecorator affinityDecorator) {
         this.strategyFactory = strategyFactory;
         this.affinityDecorator = affinityDecorator;
     }
@@ -66,22 +74,19 @@ public class ApiInstanceServiceImpl extends ServiceImpl<ApiInstanceMapper, ApiIn
                     return true;
                 }).toList();
 
-        if (healthyInstances.isEmpty()) {
-            throw new BusinessException("NO_HEALTHY_INSTANCE", "所有API实例都不可用或被熔断");
-        }
+        if (healthyInstances.isEmpty()) throw new BusinessException("NO_HEALTHY_INSTANCE", "所有API实例都不可用或被熔断");
+
         return healthyInstances;
     }
 
     @Override
     public ApiInstanceEntity selectInstanceWithStrategy(List<ApiInstanceEntity> healthyInstances, Map<String, InstanceMetricsEntity> metricsMap, InstanceSelectionCommand command) {
-        logger.info("开始使用策略选择最佳API实例: 候选实例数={}, 策略={}",
-                healthyInstances.size(), command.getLoadBalancingType());
+        logger.info("开始使用策略选择最佳API实例: 候选实例数={}, 策略={}", healthyInstances.size(), command.getLoadBalancingType());
 
         // 使用亲和性感知的策略选择实例
-        LoadBalancingStrategy strategy = strategyFactory.getStrategy(LoadBalancingType.ROUND_ROBIN);
+        LoadBalancingStrategy strategy = strategyFactory.getStrategy(command.getLoadBalancingType());
         ApiInstanceEntity selected = affinityDecorator.selectInstanceWithAffinity(
-                healthyInstances, metricsMap, strategy, command.getAffinityContext()
-        );
+                healthyInstances, metricsMap, strategy, command.getAffinityContext());
 
         if (command.hasAffinityRequirement()) {
             logger.info("选择API实例成功（含亲和性）: businessId={}, instanceId={}, strategy={}, affinity={}",
@@ -93,5 +98,100 @@ public class ApiInstanceServiceImpl extends ServiceImpl<ApiInstanceMapper, ApiIn
         }
 
         return selected;
+    }
+
+    @Override
+    public boolean isApiInstanceExists(String projectId, ApiType apiType, String businessId) {
+        return lambdaQuery().eq(ApiInstanceEntity::getProjectId, projectId)
+                .eq(ApiInstanceEntity::getApiType, apiType)
+                .eq(ApiInstanceEntity::getBusinessId, businessId)
+                .exists();
+    }
+
+    @Override
+    @Transactional
+    public ApiInstanceDTO createApiInstance(ApiInstanceCreateRequest request, String projectId) {
+
+        // 通过Assembler将请求转换为实体，使用上下文中的projectId
+        ApiInstanceEntity entity = ApiInstanceAssembler.toEntity(request, projectId);
+
+        save(entity);
+        // 记录日志
+        logger.info("API实例创建成功，实例ID: {}", entity.getId());
+        // 转换为DTO返回
+        return ApiInstanceAssembler.toDTO(entity);
+    }
+    @Override
+    @Transactional
+    public ApiInstanceDTO updateApiInstance(String projectId, String apiType, String businessId, ApiInstanceUpdateRequest request) {
+        logger.info("开始更新API实例，项目ID: {}，API类型: {}，业务ID: {}", projectId, apiType, businessId);
+
+        // 根据projectId、apiType、businessId查找现有实例
+        ApiInstanceEntity existingEntity = getApiInstanceByBusinessKey(projectId, ApiType.fromCode(apiType), businessId);
+
+        // 通过Assembler将请求转换为实体，并设置正确的标识信息
+        ApiInstanceEntity updateEntity = ApiInstanceAssembler.toEntity(request, projectId);
+        updateEntity.setId(existingEntity.getId());
+
+        // 调用领域服务更新
+        boolean success = updateById(updateEntity);
+        if (!success) throw new BusinessException("UPDATE_FAILED", "更新API实例失败");
+        return ApiInstanceAssembler.toDTO(updateEntity);
+    }
+
+    @Override
+    public void deleteApiInstance(String projectId, String businessId, ApiType apiType) {
+        lambdaUpdate().eq(ApiInstanceEntity::getProjectId, projectId)
+                .eq(ApiInstanceEntity::getApiType, apiType)
+                .eq(ApiInstanceEntity::getBusinessId, businessId)
+                .remove();
+    }
+
+    /**
+     * 激活API实例
+     */
+    @Override
+    @Transactional
+    public ApiInstanceDTO activateApiInstance(String projectId, String apiType, String businessId) {
+        logger.info("激活API实例，项目ID: {}, API类型: {}, 业务ID: {}", projectId, apiType, businessId);
+
+        ApiInstanceEntity entity = getApiInstanceByBusinessKey(projectId, ApiType.fromCode(apiType), businessId);
+        entity.activate();
+
+        updateById(entity);
+
+        return ApiInstanceAssembler.toDTO(entity);
+    }
+
+    @Override
+    @Transactional
+    public ApiInstanceDTO deactivateApiInstance(String projectId, String apiType, String businessId) {
+        logger.info("停用API实例，项目ID: {}, API类型: {}, 业务ID: {}", projectId, apiType, businessId);
+
+        ApiInstanceEntity entity = getApiInstanceByBusinessKey(projectId, ApiType.fromCode(apiType), businessId);
+        entity.deactivate();
+
+        updateById(entity);
+        return ApiInstanceAssembler.toDTO(entity);
+    }
+
+    @Override
+    @Transactional
+    public ApiInstanceDTO deprecateApiInstance(String projectId, String apiType, String businessId) {
+        logger.info("标记API实例为已弃用，项目ID: {}, API类型: {}, 业务ID: {}", projectId, apiType, businessId);
+
+        ApiInstanceEntity entity = getApiInstanceByBusinessKey(projectId, ApiType.fromCode(apiType), businessId);
+        entity.deprecate();
+
+        updateById(entity);
+
+        return ApiInstanceAssembler.toDTO(entity);
+    }
+
+    private ApiInstanceEntity getApiInstanceByBusinessKey(String projectId, ApiType apiType, String businessId) {
+        return lambdaQuery().eq(ApiInstanceEntity::getProjectId, projectId)
+                .eq(ApiInstanceEntity::getApiType, apiType)
+                .eq(ApiInstanceEntity::getBusinessId, businessId)
+                .one();
     }
 }

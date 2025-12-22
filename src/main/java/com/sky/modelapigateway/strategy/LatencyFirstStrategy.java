@@ -15,7 +15,7 @@ import java.util.Map;
  * 延迟优先负载均衡策略
  * 优先选择平均延迟最低的实例，适用于对响应时间敏感的场景
  * 
- * @author xhy
+ * @author fanofacane
  * @since 1.0.0
  */
 @Component
@@ -44,32 +44,17 @@ public class LatencyFirstStrategy implements LoadBalancingStrategy {
     @Override
     public ApiInstanceEntity selectInstance(List<ApiInstanceEntity> candidates,
                                             Map<String, InstanceMetricsEntity> metricsMap) {
-        
-        if (candidates.isEmpty()) {
-            throw new IllegalArgumentException("候选实例列表不能为空");
-        }
 
-        // 过滤掉被熔断的实例
-        List<ApiInstanceEntity> availableInstances = candidates.stream()
-                .filter(instance -> {
-                    InstanceMetricsEntity metrics = metricsMap.get(instance.getId());
-                    return metrics == null || !metrics.isCircuitBreakerOpen();
-                })
-                .toList();
-
-        if (availableInstances.isEmpty()) {
-            logger.warn("所有实例都被熔断，返回第一个实例");
-            return candidates.get(0);
-        }
 
         // 按延迟排序，选择延迟最低的实例
-        ApiInstanceEntity selected = availableInstances.stream()
+        ApiInstanceEntity selected = candidates.stream()
                 .min(Comparator.comparingDouble(instance -> getAverageLatency(instance, metricsMap)))
-                .orElse(availableInstances.get(0));
+                .orElse(candidates.getFirst());
 
         double latency = getAverageLatency(selected, metricsMap);
-        logger.debug("延迟优先策略选择实例: businessId={}, averageLatency={:.1f}ms", 
+        String logMsg = String.format("延迟优先策略选择实例: businessId=%s, averageLatency=%.1fms",
                 selected.getBusinessId(), latency);
+        logger.debug(logMsg);
         
         return selected;
     }
@@ -90,10 +75,8 @@ public class LatencyFirstStrategy implements LoadBalancingStrategy {
      */
     private double getAverageLatency(ApiInstanceEntity instance, Map<String, InstanceMetricsEntity> metricsMap) {
         InstanceMetricsEntity metrics = metricsMap.get(instance.getId());
-        if (metrics == null) {
-            // 冷启动实例，给予默认延迟
-            return COLD_START_DEFAULT_LATENCY;
-        }
+        if (metrics == null) return COLD_START_DEFAULT_LATENCY;
+
         return metrics.getAverageLatency();
     }
 

@@ -1,0 +1,575 @@
+2025-12-21T19:32:20.132+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 22104 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-21T19:32:20.135+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-21T19:32:20.903+08:00  INFO 22104 --- [Model-API-Gateway] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2025-12-21T19:32:20.915+08:00  INFO 22104 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-21T19:32:20.915+08:00  INFO 22104 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-21T19:32:20.956+08:00  INFO 22104 --- [Model-API-Gateway] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 788 ms
+2025-12-21T19:32:21.030+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-21T19:32:21.030+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-21T19:32:21.030+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-21T19:32:21.030+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-21T19:32:21.030+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-21T19:32:21.031+08:00  INFO 22104 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-21T19:32:21.055+08:00  WARN 22104 --- [Model-API-Gateway] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.sky.modelapigateway.mapper.ProjectMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-12-21T19:32:21.057+08:00  INFO 22104 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-21T19:32:21.080+08:00  INFO 22104 --- [Model-API-Gateway] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-21T19:32:21.092+08:00 ERROR 22104 --- [Model-API-Gateway] [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.sky.modelapigateway.service.project.Impl.ProjectServiceImpl required a bean of type 'com.sky.modelapigateway.mapper.ProjectMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.sky.modelapigateway.mapper.ProjectMapper' in your configuration.
+
+2025-12-21T19:37:17.422+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 19736 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-21T19:37:17.424+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-21T19:37:18.193+08:00  INFO 19736 --- [Model-API-Gateway] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2025-12-21T19:37:18.204+08:00  INFO 19736 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-21T19:37:18.205+08:00  INFO 19736 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-21T19:37:18.242+08:00  INFO 19736 --- [Model-API-Gateway] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 779 ms
+2025-12-21T19:37:18.312+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-21T19:37:18.313+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-21T19:37:18.313+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-21T19:37:18.313+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-21T19:37:18.313+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-21T19:37:18.313+08:00  INFO 19736 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-21T19:37:18.338+08:00  WARN 19736 --- [Model-API-Gateway] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'productMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProductMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+2025-12-21T19:37:18.340+08:00  INFO 19736 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-21T19:37:18.358+08:00  INFO 19736 --- [Model-API-Gateway] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-21T19:37:18.370+08:00 ERROR 19736 --- [Model-API-Gateway] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'productMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProductMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.1.jar:4.0.1]
+	at com.sky.modelapigateway.ModelApiGatewayApplication.main(ModelApiGatewayApplication.java:12) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'productMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProductMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'productMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProductMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 35 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'productMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProductMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 49 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:182) ~[spring-core-7.0.2.jar:7.0.2]
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:122) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:69) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:46) ~[spring-tx-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 60 common frames omitted
+
+2025-12-21T19:41:23.961+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 15340 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-21T19:41:23.963+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-21T19:41:24.710+08:00  INFO 15340 --- [Model-API-Gateway] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2025-12-21T19:41:24.721+08:00  INFO 15340 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-21T19:41:24.721+08:00  INFO 15340 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-21T19:41:24.761+08:00  INFO 15340 --- [Model-API-Gateway] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 761 ms
+2025-12-21T19:41:24.840+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-21T19:41:24.841+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-21T19:41:24.841+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-21T19:41:24.841+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-21T19:41:24.841+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-21T19:41:24.841+08:00  INFO 15340 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-21T19:41:24.869+08:00  WARN 15340 --- [Model-API-Gateway] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+2025-12-21T19:41:24.872+08:00  INFO 15340 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-21T19:41:24.894+08:00  INFO 15340 --- [Model-API-Gateway] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-21T19:41:24.907+08:00 ERROR 15340 --- [Model-API-Gateway] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.1.jar:4.0.1]
+	at com.sky.modelapigateway.ModelApiGatewayApplication.main(ModelApiGatewayApplication.java:12) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 35 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 49 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:182) ~[spring-core-7.0.2.jar:7.0.2]
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:122) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:69) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:46) ~[spring-tx-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 60 common frames omitted
+
+2025-12-21T19:43:28.665+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 22096 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-21T19:43:28.667+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-21T19:43:29.436+08:00  INFO 22096 --- [Model-API-Gateway] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2025-12-21T19:43:29.448+08:00  INFO 22096 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-21T19:43:29.449+08:00  INFO 22096 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-21T19:43:29.488+08:00  INFO 22096 --- [Model-API-Gateway] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 782 ms
+2025-12-21T19:43:29.560+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-21T19:43:29.560+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-21T19:43:29.560+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-21T19:43:29.560+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-21T19:43:29.560+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-21T19:43:29.560+08:00  INFO 22096 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-21T19:43:29.586+08:00  WARN 22096 --- [Model-API-Gateway] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+2025-12-21T19:43:29.589+08:00  INFO 22096 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-21T19:43:29.607+08:00  INFO 22096 --- [Model-API-Gateway] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-21T19:43:29.618+08:00 ERROR 22096 --- [Model-API-Gateway] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.1.jar:4.0.1]
+	at com.sky.modelapigateway.ModelApiGatewayApplication.main(ModelApiGatewayApplication.java:12) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\apiInstance\Impl\ApiInstanceServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'projectServiceImpl' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\service\project\Impl\ProjectServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 35 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'projectMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ProjectMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveBean(DefaultListableBeanFactory.java:1225) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1704) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 49 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:182) ~[spring-core-7.0.2.jar:7.0.2]
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:122) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:69) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:46) ~[spring-tx-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 60 common frames omitted
+
+2025-12-21T19:47:23.503+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 20696 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-21T19:47:23.506+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-21T19:47:24.252+08:00  INFO 20696 --- [Model-API-Gateway] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2025-12-21T19:47:24.263+08:00  INFO 20696 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-21T19:47:24.263+08:00  INFO 20696 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-21T19:47:24.301+08:00  INFO 20696 --- [Model-API-Gateway] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 757 ms
+2025-12-21T19:47:24.370+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-21T19:47:24.371+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-21T19:47:24.371+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-21T19:47:24.371+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-21T19:47:24.371+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-21T19:47:24.372+08:00  INFO 20696 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-21T19:47:24.397+08:00  WARN 20696 --- [Model-API-Gateway] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+2025-12-21T19:47:24.399+08:00  INFO 20696 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-21T19:47:24.417+08:00  INFO 20696 --- [Model-API-Gateway] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-21T19:47:24.429+08:00 ERROR 20696 --- [Model-API-Gateway] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.1.jar:4.0.1]
+	at com.sky.modelapigateway.ModelApiGatewayApplication.main(ModelApiGatewayApplication.java:12) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 36 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:182) ~[spring-core-7.0.2.jar:7.0.2]
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:122) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:69) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:46) ~[spring-tx-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 46 common frames omitted
+
+2025-12-21T19:49:33.223+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 21996 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-21T19:49:33.225+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-21T19:49:33.967+08:00  INFO 21996 --- [Model-API-Gateway] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2025-12-21T19:49:33.978+08:00  INFO 21996 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-21T19:49:33.978+08:00  INFO 21996 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-21T19:49:34.016+08:00  INFO 21996 --- [Model-API-Gateway] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 752 ms
+2025-12-21T19:49:34.087+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-21T19:49:34.087+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-21T19:49:34.087+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-21T19:49:34.087+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-21T19:49:34.087+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-21T19:49:34.087+08:00  INFO 21996 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-21T19:49:34.114+08:00  WARN 21996 --- [Model-API-Gateway] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+2025-12-21T19:49:34.116+08:00  INFO 21996 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-21T19:49:34.134+08:00  INFO 21996 --- [Model-API-Gateway] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-21T19:49:34.145+08:00 ERROR 21996 --- [Model-API-Gateway] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.1.jar:4.0.1]
+	at com.sky.modelapigateway.ModelApiGatewayApplication.main(ModelApiGatewayApplication.java:12) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 36 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:182) ~[spring-core-7.0.2.jar:7.0.2]
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:122) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:69) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:46) ~[spring-tx-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 46 common frames omitted
+
+2025-12-21T19:49:42.536+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 4776 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-21T19:49:42.539+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-21T19:49:43.296+08:00  INFO 4776 --- [Model-API-Gateway] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2025-12-21T19:49:43.307+08:00  INFO 4776 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-21T19:49:43.308+08:00  INFO 4776 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2025-12-21T19:49:43.345+08:00  INFO 4776 --- [Model-API-Gateway] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 766 ms
+2025-12-21T19:49:43.415+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-21T19:49:43.415+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-21T19:49:43.415+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-21T19:49:43.416+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-21T19:49:43.416+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-21T19:49:43.416+08:00  INFO 4776 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-21T19:49:43.441+08:00  WARN 4776 --- [Model-API-Gateway] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+2025-12-21T19:49:43.443+08:00  INFO 4776 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-12-21T19:49:43.461+08:00  INFO 4776 --- [Model-API-Gateway] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-21T19:49:43.480+08:00 ERROR 4776 --- [Model-API-Gateway] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceController' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\controller\ApiInstanceController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1382) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:565) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620) ~[spring-context-7.0.2.jar:7.0.2]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.0.1.jar:4.0.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.0.1.jar:4.0.1]
+	at com.sky.modelapigateway.ModelApiGatewayApplication.main(ModelApiGatewayApplication.java:12) ~[classes/:na]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'apiInstanceServiceImpl': Unsatisfied dependency expressed through field 'baseMapper': Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:766) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:747) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:146) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:492) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1446) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:912) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'apiInstanceMapper' defined in file [D:\software\GitProject\Model-API-Gateway\target\classes\com\sky\modelapigateway\mapper\ApiInstanceMapper.class]: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1817) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:229) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1762) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1651) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:763) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 36 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Property 'sqlSessionFactory' or 'sqlSessionTemplate' are required
+	at org.springframework.util.Assert.notNull(Assert.java:182) ~[spring-core-7.0.2.jar:7.0.2]
+	at org.mybatis.spring.support.SqlSessionDaoSupport.checkDaoConfig(SqlSessionDaoSupport.java:122) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.mybatis.spring.mapper.MapperFactoryBean.checkDaoConfig(MapperFactoryBean.java:69) ~[mybatis-spring-3.0.4.jar:3.0.4]
+	at org.springframework.dao.support.DaoSupport.afterPropertiesSet(DaoSupport.java:46) ~[spring-tx-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864) ~[spring-beans-7.0.2.jar:7.0.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813) ~[spring-beans-7.0.2.jar:7.0.2]
+	... 46 common frames omitted
+

@@ -1,17 +1,23 @@
 package com.sky.modelapigateway.service.project.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sky.modelapigateway.assembler.ProjectAssembler;
 import com.sky.modelapigateway.domain.apikey.ApiKeyEntity;
+import com.sky.modelapigateway.domain.apikey.ApiKeyStatus;
+import com.sky.modelapigateway.domain.product.ProjectDTO;
 import com.sky.modelapigateway.domain.product.ProjectEntity;
+import com.sky.modelapigateway.domain.request.ProjectCreateRequest;
 import com.sky.modelapigateway.exception.BusinessException;
 import com.sky.modelapigateway.exception.EntityNotFoundException;
 import com.sky.modelapigateway.mapper.ApikeyMapper;
-import com.sky.modelapigateway.mapper.ProductMapper;
+import com.sky.modelapigateway.mapper.ProjectMapper;
 import com.sky.modelapigateway.service.project.ProjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,16 +29,16 @@ import java.util.List;
  * @since 1.0.0
  */
 @Service
-public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity> implements ProjectService {
+public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity> implements ProjectService {
 
     private static final Logger logger = LoggerFactory.getLogger(ProjectServiceImpl.class);
 
-    private final ProductMapper productMapper;
     private final ApikeyMapper apikeyMapper;
+    private final ProjectMapper projectMapper;
 
-    public ProjectServiceImpl(ProductMapper productMapper, ApikeyMapper apikeyMapper) {
-        this.productMapper = productMapper;
+    public ProjectServiceImpl( ApikeyMapper apikeyMapper,ProjectMapper projectMapper) {
         this.apikeyMapper = apikeyMapper;
+        this.projectMapper = projectMapper;
     }
 
     /**
@@ -55,7 +61,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         ProjectEntity project = new ProjectEntity(name, description, apiKey);
         
         // 保存项目
-        productMapper.insert(project);
+        projectMapper.insert(project);
         
         logger.info("项目创建成功，项目ID: {}，项目名: {}", project.getId(), project.getName());
         return project;
@@ -64,7 +70,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
     public ProjectEntity getProjectByApiKey(String apiKey) {
         LambdaQueryWrapper<ProjectEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(ProjectEntity::getApiKey, apiKey);
-        return productMapper.selectOne(queryWrapper);
+        return projectMapper.selectOne(queryWrapper);
     }
 
     /**
@@ -73,7 +79,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
     public ProjectEntity getProjectById(String id) {
         logger.debug("获取项目详情，项目ID: {}", id);
         
-        ProjectEntity project = productMapper.selectById(id);
+        ProjectEntity project = projectMapper.selectById(id);
         if (project == null) {
             throw new EntityNotFoundException("项目不存在，ID: " + id);
         }
@@ -90,7 +96,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         LambdaQueryWrapper<ProjectEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(ProjectEntity::getCreatedAt);
         
-        return productMapper.selectList(queryWrapper);
+        return projectMapper.selectList(queryWrapper);
     }
 
     /**
@@ -119,7 +125,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         LambdaQueryWrapper<ProjectEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(ProjectEntity::getName, name);
         
-        Long count = productMapper.selectCount(queryWrapper);
+        Long count = projectMapper.selectCount(queryWrapper);
         if (count > 0) {
             throw new BusinessException("DUPLICATE_PROJECT_NAME", "项目名称已存在: " + name);
         }
@@ -130,10 +136,37 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
     // 是否存在，不存在抛异常
     @Override
     public void validateProjectExists(String projectId) {
-        ProjectEntity project = productMapper.selectById(projectId);
-        if (project == null) {
-            throw new EntityNotFoundException("项目不存在，ID: " + projectId);
-        }
+        ProjectEntity project = projectMapper.selectById(projectId);
+        if (project == null) throw new EntityNotFoundException("项目不存在，ID: " + projectId);
+
+    }
+
+    /**
+     * 创建项目
+     * 需要事务支持，因为涉及到数据更新
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public ProjectDTO createProject(ProjectCreateRequest request) {
+        logger.info("应用层开始创建项目，请求: {}", request);
+
+        // 调用领域服务创建项目
+        ProjectEntity projectEntity = createProject(request.getName(), request.getDescription(), request.getApiKey());
+
+        useApiKey(request.getApiKey());
+
+        // 转换为DTO返回
+        ProjectDTO result = ProjectAssembler.toDTO(projectEntity);
+
+        logger.info("应用层项目创建成功，项目ID: {}", result.getId());
+        return result;
+    }
+
+    private void useApiKey(String apiKey) {
+        LambdaUpdateWrapper<ApiKeyEntity> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.eq(ApiKeyEntity::getApiKeyValue, apiKey);
+        updateWrapper.set(ApiKeyEntity::getStatus, ApiKeyStatus.ACTIVE);
+        apikeyMapper.update(null, updateWrapper);
     }
 
     /**
@@ -147,7 +180,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
             return false;
         }
         
-        ProjectEntity project = productMapper.selectById(projectId);
+        ProjectEntity project = projectMapper.selectById(projectId);
         if (project == null) {
             logger.debug("项目不存在: {}", projectId);
             return false;
@@ -170,7 +203,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         LambdaQueryWrapper<ProjectEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(ProjectEntity::getCreatedAt);
         
-        return productMapper.selectList(queryWrapper);
+        return projectMapper.selectList(queryWrapper);
     }
 
     /**
@@ -183,7 +216,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         queryWrapper.like(ProjectEntity::getName, projectName)
                    .orderByDesc(ProjectEntity::getCreatedAt);
         
-        return productMapper.selectList(queryWrapper);
+        return projectMapper.selectList(queryWrapper);
     }
 
     /**
@@ -196,7 +229,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         queryWrapper.eq(ProjectEntity::getStatus, status)
                    .orderByDesc(ProjectEntity::getCreatedAt);
         
-        return productMapper.selectList(queryWrapper);
+        return projectMapper.selectList(queryWrapper);
     }
 
     /**
@@ -215,7 +248,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         // 3. 删除项目记录
         
         // 目前只删除项目记录
-        int deleted = productMapper.deleteById(projectId);
+        int deleted = projectMapper.deleteById(projectId);
         if (deleted > 0) {
             logger.warn("项目删除成功，项目ID: {}", projectId);
         } else {
@@ -245,7 +278,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
         LambdaQueryWrapper<ProjectEntity> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(ProjectEntity::getApiKey, apiKeyValue);
         
-        ProjectEntity project = productMapper.selectOne(queryWrapper);
+        ProjectEntity project = projectMapper.selectOne(queryWrapper);
         if (project == null) {
             logger.debug("未找到使用此API Key的项目: {}", apiKeyValue);
             return null;
@@ -261,7 +294,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProductMapper, ProjectEntity
     public String getProjectNameById(String projectId) {
         logger.debug("根据项目ID获取项目名称: {}", projectId);
         
-        ProjectEntity project = productMapper.selectById(projectId);
+        ProjectEntity project = projectMapper.selectById(projectId);
         if (project == null) {
             logger.debug("项目不存在: {}", projectId);
             return null;

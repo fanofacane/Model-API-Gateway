@@ -48,8 +48,7 @@ public class LoadBalancingStrategyFactory {
             LoadBalancingType type = strategy.getStrategyType();
             strategyMap.put(type, strategy);
 
-            logger.info("注册负载均衡策略: {} -> {}",
-                    type.getCode(), strategy.getClass().getSimpleName());
+            logger.info("注册负载均衡策略: {} -> {}", type.getCode(), strategy.getClass().getSimpleName());
         }
 
         logger.info("负载均衡策略初始化完成，共注册 {} 个策略", strategyMap.size());
@@ -71,11 +70,7 @@ public class LoadBalancingStrategyFactory {
      */
     public LoadBalancingStrategy getStrategy(LoadBalancingType loadBalancingType) {
         LoadBalancingStrategy strategy = strategyMap.get(loadBalancingType);
-
-        if (strategy == null) {
-            throw new IllegalArgumentException(
-                    String.format("未找到负载均衡策略类型 %s 的实现", loadBalancingType.getCode()));
-        }
+        if (strategy == null) throw new IllegalArgumentException(String.format("未找到负载均衡策略类型 %s 的实现", loadBalancingType.getCode()));
 
         return strategy;
     }
@@ -86,7 +81,7 @@ public class LoadBalancingStrategyFactory {
      * @return 默认的负载均衡策略
      */
     public LoadBalancingStrategy getDefaultStrategy() {
-        return getStrategy(LoadBalancingType.SMART);
+        return getStrategy(LoadBalancingType.ROUND_ROBIN);
     }
 
     /**

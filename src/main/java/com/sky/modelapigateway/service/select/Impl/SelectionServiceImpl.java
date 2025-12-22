@@ -5,16 +5,24 @@ import com.sky.modelapigateway.assembler.SelectionAssembler;
 import com.sky.modelapigateway.domain.ApiInstanceDTO;
 import com.sky.modelapigateway.domain.Instance.InstanceMetricsEntity;
 import com.sky.modelapigateway.domain.apikey.ApiInstanceEntity;
+import com.sky.modelapigateway.domain.command.CallResultCommand;
 import com.sky.modelapigateway.domain.command.InstanceSelectionCommand;
+import com.sky.modelapigateway.domain.request.ReportResultRequest;
 import com.sky.modelapigateway.domain.request.SelectInstanceRequest;
+import com.sky.modelapigateway.domain.strategy.LbActiveStrategy;
 import com.sky.modelapigateway.exception.BusinessException;
+import com.sky.modelapigateway.mapper.ActiveStrategyMapper;
+import com.sky.modelapigateway.mapper.LoadBalanceStrategyMapper;
 import com.sky.modelapigateway.service.apiInstance.ApiInstanceService;
 import com.sky.modelapigateway.service.metrics.MetricsService;
 import com.sky.modelapigateway.service.project.ProjectService;
 import com.sky.modelapigateway.service.select.SelectionService;
+import com.sky.modelapigateway.service.strategy.ActiveStrategyService;
+import com.sky.modelapigateway.service.strategy.LoadBalanceStrategyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -26,11 +34,16 @@ public class SelectionServiceImpl implements SelectionService {
     private final ProjectService projectService;
     private final ApiInstanceService apiInstanceService;
     private final MetricsService metricsService;
-    public SelectionServiceImpl(ProjectService projectService, ApiInstanceService apiInstanceService
-    , MetricsService metricsService) {
+    private final LoadBalanceStrategyService loadBalanceStrategyService;
+    private final ActiveStrategyService activeStrategyService;
+    public SelectionServiceImpl(ProjectService projectService, ApiInstanceService apiInstanceService,
+                                MetricsService metricsService, LoadBalanceStrategyService loadBalanceStrategyService,
+                                ActiveStrategyService activeStrategyService) {
         this.projectService = projectService;
         this.apiInstanceService = apiInstanceService;
         this.metricsService = metricsService;
+        this.loadBalanceStrategyService = loadBalanceStrategyService;
+        this.activeStrategyService = activeStrategyService;
     }
     /**
      * 选择算法应用服务
@@ -55,6 +68,24 @@ public class SelectionServiceImpl implements SelectionService {
             // 没有降级链或其他类型的异常，直接抛出
             throw e;
         }
+    }
+
+    /**
+     * 上报调用结果
+     * 需要事务支持，因为涉及指标数据更新
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void reportCallResult(ReportResultRequest request, String projectId) {
+        logger.info("应用层开始处理调用结果上报: instanceId={}, success={}", request.getInstanceId(), request.getSuccess());
+
+        // 应用层通过Assembler将Request对象转换成领域命令对象
+        CallResultCommand command = SelectionAssembler.toCommand(request, projectId);
+
+        // 调用领域服务处理结果上报
+        metricsService.recordCallResult(command);
+
+        logger.info("应用层调用结果上报处理完成");
     }
 
     private ApiInstanceDTO tryFallbackInstances(SelectInstanceRequest request, String currentProjectId) {
@@ -103,11 +134,11 @@ public class SelectionServiceImpl implements SelectionService {
 
     private ApiInstanceDTO selectInstanceInternal(SelectInstanceRequest request, String currentProjectId) {
 
-        // 1. 应用层通过Assembler将Request对象转换成领域命令对象
-        InstanceSelectionCommand command = SelectionAssembler.toCommand(request, currentProjectId);
-
-        // 2. 验证项目存在
-        projectService.validateProjectExists(command.getProjectId());
+        // 1. 验证项目存在
+        projectService.validateProjectExists(currentProjectId);
+        LbActiveStrategy strategy = activeStrategyService.lambdaQuery().last("limit 1").one();
+        // 2. 应用层通过Assembler将Request对象转换成领域命令对象
+        InstanceSelectionCommand command = SelectionAssembler.toCommand(request, currentProjectId,strategy.getStrategyType());
 
         // 3. 查找候选实例
         List<ApiInstanceEntity> candidates = apiInstanceService.findCandidateInstances(command);

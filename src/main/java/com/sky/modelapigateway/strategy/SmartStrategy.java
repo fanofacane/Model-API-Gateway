@@ -17,7 +17,7 @@ import java.util.Map;
  * 通过综合评分算法直接选择最优实例
  * 考虑成功率、延迟、负载等多个指标
  * 
- * @author xhy
+ * @author fanofacane
  * @since 1.0.0
  */
 @Component
@@ -59,34 +59,20 @@ public class SmartStrategy implements LoadBalancingStrategy {
     @Override
     public ApiInstanceEntity selectInstance(List<ApiInstanceEntity> instances,
                                             Map<String, InstanceMetricsEntity> metricsMap) {
-        
-        if (instances.isEmpty()) {
-            throw new IllegalArgumentException("候选实例列表不能为空");
-        }
+
 
         logger.debug("智能策略开始综合评分，候选实例数量: {}", instances.size());
 
-        // 过滤掉被熔断的实例
-        List<ApiInstanceEntity> availableInstances = instances.stream()
-                .filter(instance -> {
-                    InstanceMetricsEntity metrics = metricsMap.get(instance.getId());
-                    return metrics == null || !metrics.isCircuitBreakerOpen();
-                })
-                .toList();
-
-        if (availableInstances.isEmpty()) {
-            logger.warn("所有实例都被熔断，返回第一个实例");
-            return instances.get(0);
-        }
 
         // 计算每个实例的综合得分，选择得分最高的实例
-        ApiInstanceEntity selected = availableInstances.stream()
+        ApiInstanceEntity selected = instances.stream()
                 .max(Comparator.comparingDouble(instance -> calculateComprehensiveScore(instance, metricsMap)))
-                .orElse(availableInstances.get(0));
+                .orElse(instances.getFirst());
 
         double score = calculateComprehensiveScore(selected, metricsMap);
-        logger.info("智能策略选择实例: businessId={}, 综合得分={:.2f}", 
+        String logMsg = String.format("延迟优先策略选择实例: businessId=%s, averageLatency=%.1fms",
                 selected.getBusinessId(), score);
+        logger.debug(logMsg);
         
         return selected;
     }
@@ -114,15 +100,9 @@ public class SmartStrategy implements LoadBalancingStrategy {
         double loadScore = calculateLoadScore(concurrency);
         
         // 计算综合得分
-        double comprehensiveScore = successRateScore * SUCCESS_RATE_WEIGHT
-                                  + latencyScore * LATENCY_WEIGHT
-                                  + loadScore * LOAD_WEIGHT;
-        
-        logger.debug("实例评分详情: businessId={}, 成功率={:.3f}({:.1f}分), 延迟={:.1f}ms({:.1f}分), 负载={}({:.1f}分), 综合得分={:.2f}", 
-                instance.getBusinessId(), successRate, successRateScore, latency, latencyScore, 
-                concurrency, loadScore, comprehensiveScore);
-        
-        return comprehensiveScore;
+        return successRateScore * SUCCESS_RATE_WEIGHT
+                + latencyScore * LATENCY_WEIGHT
+                + loadScore * LOAD_WEIGHT;
     }
 
     /**
@@ -138,9 +118,8 @@ public class SmartStrategy implements LoadBalancingStrategy {
      * 延迟越低，得分越高
      */
     private double calculateLatencyScore(double latency) {
-        if (latency <= 0) {
-            return MAX_SCORE;
-        }
+        if (latency <= 0) return MAX_SCORE;
+
         
         // 使用反比例函数：得分 = 100 * (基准值 / (基准值 + 实际延迟))
         // 延迟为0时得分100，延迟等于基准值时得分50，延迟越高得分越低
@@ -153,9 +132,8 @@ public class SmartStrategy implements LoadBalancingStrategy {
      * 并发数越低，得分越高
      */
     private double calculateLoadScore(int concurrency) {
-        if (concurrency <= 0) {
-            return MAX_SCORE;
-        }
+        if (concurrency <= 0) return MAX_SCORE;
+
         
         // 使用反比例函数：得分 = 100 * (基准值 / (基准值 + 实际并发))
         double score = MAX_SCORE * ((double) LOAD_SCORE_MAX_CONCURRENCY / (LOAD_SCORE_MAX_CONCURRENCY + concurrency));
@@ -166,9 +144,8 @@ public class SmartStrategy implements LoadBalancingStrategy {
      * 获取实例成功率
      */
     private double getSuccessRate(InstanceMetricsEntity metrics) {
-        if (metrics == null) {
-            return COLD_START_SUCCESS_RATE;
-        }
+        if (metrics == null) return COLD_START_SUCCESS_RATE;
+
         return metrics.getSuccessRate();
     }
 
@@ -176,9 +153,8 @@ public class SmartStrategy implements LoadBalancingStrategy {
      * 获取实例平均延迟
      */
     private double getAverageLatency(InstanceMetricsEntity metrics) {
-        if (metrics == null) {
-            return COLD_START_LATENCY;
-        }
+        if (metrics == null) return COLD_START_LATENCY;
+
         return metrics.getAverageLatency();
     }
 
@@ -186,9 +162,8 @@ public class SmartStrategy implements LoadBalancingStrategy {
      * 获取实例并发数
      */
     private int getConcurrency(InstanceMetricsEntity metrics) {
-        if (metrics == null) {
-            return COLD_START_CONCURRENCY;
-        }
+        if (metrics == null) return COLD_START_CONCURRENCY;
+
         return metrics.getConcurrency();
     }
 
