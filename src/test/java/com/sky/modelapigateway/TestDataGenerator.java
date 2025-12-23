@@ -25,7 +25,7 @@ import java.util.Map;
  * 测试数据生成器
  * 不使用事务回滚，生成持久化的测试数据
  * 
- * @author xhy
+ * @author fanofacane
  * @since 1.0.0
  */
 @SpringBootTest(classes = ModelApiGatewayApplication.class)

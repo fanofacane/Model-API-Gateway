@@ -31,7 +31,7 @@ public class MetricsServiceImpl extends ServiceImpl<MetricsMapper, InstanceMetri
                 .orderByDesc(InstanceMetricsEntity::getTimestampWindow)
                 .last("limit 10").list();
         logger.debug("查询到 {} 条指标数据，实例ID数量: {}", metricsList.size(), instanceIds.size());
-        if (metricsList.isEmpty())  throw  new IllegalArgumentException("没有查询到任何指标数据");
+        if (metricsList.isEmpty())  return Map.of();
         return metricsList.stream()
                 .collect(Collectors.toMap(
                         InstanceMetricsEntity::getRegistryId,

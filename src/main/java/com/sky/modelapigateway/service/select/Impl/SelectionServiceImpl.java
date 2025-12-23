@@ -147,6 +147,7 @@ public class SelectionServiceImpl implements SelectionService {
         List<String> instanceIds = candidates.stream().map(ApiInstanceEntity::getId).collect(Collectors.toList());
         Map<String, InstanceMetricsEntity> metricsMap = metricsService.getInstanceMetrics(instanceIds);
 
+        if (metricsMap.isEmpty()) return ApiInstanceAssembler.toDTO(candidates.getFirst());
         // 5. 过滤掉被熔断的实例
         List<ApiInstanceEntity> healthyInstances = apiInstanceService.filterHealthyInstances(candidates, metricsMap);
 

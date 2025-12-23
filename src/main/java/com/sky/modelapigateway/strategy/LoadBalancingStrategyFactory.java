@@ -18,7 +18,7 @@ import java.util.Map;
  * 负载均衡策略工厂
  * 使用 Spring 自动注入和注册所有负载均衡策略
  *
- * @author xhy
+ * @author fanofacnae
  * @since 1.0.0
  */
 @Component

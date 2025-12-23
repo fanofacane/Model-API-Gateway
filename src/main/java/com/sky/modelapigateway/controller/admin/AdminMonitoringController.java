@@ -1,0 +1,127 @@
+package com.sky.modelapigateway.controller.admin;
+
+import com.sky.modelapigateway.domain.Result;
+import com.sky.modelapigateway.domain.apikey.ApiInstanceMonitoringDTO;
+import com.sky.modelapigateway.domain.observe.MonitoringOverviewDTO;
+import com.sky.modelapigateway.domain.observe.TimeSeriesDTO;
+import com.sky.modelapigateway.enums.ApiInstanceStatus;
+import com.sky.modelapigateway.enums.GatewayStatus;
+import com.sky.modelapigateway.service.auth.MonitoringService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+public class AdminMonitoringController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AdminMonitoringController.class);
+
+    private final MonitoringService monitoringService;
+
+    public AdminMonitoringController(MonitoringService monitoringService) {
+        this.monitoringService = monitoringService;
+    }
+
+    /**
+     * 获取监控概览数据
+     * 包含总实例数、健康实例数、平均成功率、平均延迟等核心指标
+     */
+    @GetMapping("/overview")
+    public Result<MonitoringOverviewDTO> getMonitoringOverview(
+            @RequestParam(required = false) String projectId) {
+        logger.info("管理后台获取监控概览数据，项目ID: {}", projectId);
+
+        MonitoringOverviewDTO result = monitoringService.getMonitoringOverview(projectId);
+
+        return Result.success("监控概览数据获取成功", result);
+    }
+
+    /**
+     * 获取API实例监控列表
+     * 包含实例信息和最新的监控指标数据
+     */
+    @GetMapping("/instances")
+    public Result<List<ApiInstanceMonitoringDTO>> getInstancesWithMetrics(
+            @RequestParam(required = false) String projectId,
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String gatewayStatus) {
+        logger.info("管理后台获取实例监控列表，项目ID: {}，实例状态: {}，网关状态: {}",
+                projectId, status, gatewayStatus);
+
+        // 参数转换
+        ApiInstanceStatus instanceStatus = null;
+        if (status != null && !status.isEmpty()) {
+            try {
+                instanceStatus = ApiInstanceStatus.valueOf(status);
+            } catch (IllegalArgumentException e) {
+                logger.warn("无效的实例状态参数: {}", status);
+                return Result.badRequest("无效的实例状态参数: " + status);
+            }
+        }
+
+        GatewayStatus gatewareStatus = null;
+        if (gatewayStatus != null && !gatewayStatus.isEmpty()) {
+            try {
+                gatewareStatus = GatewayStatus.valueOf(gatewayStatus);
+            } catch (IllegalArgumentException e) {
+                logger.warn("无效的网关状态参数: {}", gatewayStatus);
+                return Result.badRequest("无效的网关状态参数: " + gatewayStatus);
+            }
+        }
+
+        List<ApiInstanceMonitoringDTO> result = monitoringService
+                .getInstancesWithMetrics(projectId, instanceStatus, gatewareStatus);
+
+        logger.info("实例监控列表获取成功，共 {} 个实例", result.size());
+        return Result.success("实例监控列表获取成功", result);
+    }
+
+    /**
+     * 获取时间序列数据
+     * 用于监控图表展示
+     */
+    @GetMapping("/timeseries")
+    public Result<TimeSeriesDTO> getTimeSeriesData(
+            @RequestParam String timeRange,
+            @RequestParam(required = false) String projectId) {
+        logger.info("管理后台获取时间序列数据，时间范围: {}，项目ID: {}", timeRange, projectId);
+
+        try {
+            TimeSeriesDTO result = monitoringService.getTimeSeriesData(timeRange, projectId);
+            logger.info("时间序列数据获取成功");
+            return Result.success("时间序列数据获取成功", result);
+        } catch (Exception e) {
+            logger.error("获取时间序列数据失败", e);
+            return Result.error(500, "获取时间序列数据失败: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 刷新监控数据
+     * 用于手动触发数据刷新
+     */
+    @PostMapping("/refresh")
+    public Result<Void> refreshMonitoringData(@RequestParam(required = false) String projectId) {
+        logger.info("管理后台手动刷新监控数据，项目ID: {}", projectId);
+
+        // 这里可以添加缓存清理或数据刷新逻辑
+        // 目前直接返回成功，因为数据是实时查询的
+
+        return Result.success("监控数据刷新成功", null);
+    }
+
+    /**
+     * 获取实例状态统计
+     * 按状态分组统计实例数量
+     */
+    @GetMapping("/statistics/status")
+    public Result<Object> getInstanceStatusStatistics(@RequestParam(required = false) String projectId) {
+        logger.info("管理后台获取实例状态统计，项目ID: {}", projectId);
+
+        // TODO: 可以后续实现按状态分组的统计功能
+        return Result.success("实例状态统计获取成功", null);
+    }
+}

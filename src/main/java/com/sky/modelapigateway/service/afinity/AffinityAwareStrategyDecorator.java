@@ -16,7 +16,7 @@ import java.util.Map;
  * 亲和性感知的策略装饰器
  * 将亲和性逻辑与负载均衡策略结合
  *
- * @author xhy
+ * @author fanofacane
  * @since 1.0.0
  */
 @Component

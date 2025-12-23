@@ -8,6 +8,7 @@ import com.sky.modelapigateway.domain.apikey.ApiKeyEntity;
 import com.sky.modelapigateway.domain.apikey.ApiKeyStatus;
 import com.sky.modelapigateway.domain.product.ProjectDTO;
 import com.sky.modelapigateway.domain.product.ProjectEntity;
+import com.sky.modelapigateway.domain.product.ProjectSimpleDTO;
 import com.sky.modelapigateway.domain.request.ProjectCreateRequest;
 import com.sky.modelapigateway.exception.BusinessException;
 import com.sky.modelapigateway.exception.EntityNotFoundException;
@@ -76,6 +77,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
     /**
      * 根据ID获取项目详情
      */
+    @Override
     public ProjectEntity getProjectById(String id) {
         logger.debug("获取项目详情，项目ID: {}", id);
         
@@ -197,6 +199,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
     /**
      * 获取所有项目（管理后台用）
      */
+    @Override
     public List<ProjectEntity> getAllProjects() {
         logger.debug("获取所有项目列表（管理后台）");
         
@@ -209,6 +212,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
     /**
      * 根据项目名称搜索项目
      */
+    @Override
     public List<ProjectEntity> searchProjectsByName(String projectName) {
         logger.debug("按名称搜索项目，项目名称: {}", projectName);
         
@@ -222,6 +226,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
     /**
      * 根据状态获取项目列表
      */
+    @Override
     public List<ProjectEntity> getProjectsByStatus(String status) {
         logger.debug("按状态查询项目，状态: {}", status);
         
@@ -236,6 +241,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
      * 删除项目（管理员权限）
      * 会级联删除相关的API实例和指标数据
      */
+    @Override
     public void deleteProject(String projectId) {
         logger.warn("删除项目，项目ID: {}", projectId);
         
@@ -254,6 +260,17 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
         } else {
             throw new BusinessException("PROJECT_DELETE_FAILED", "项目删除失败，项目ID: " + projectId);
         }
+    }
+
+    @Override
+    public List<ProjectSimpleDTO> getSimpleProjectList() {
+        logger.debug("应用层获取简化项目列表");
+
+        // 调用领域服务获取所有项目
+        List<ProjectEntity> projectEntities = getAllProjects();
+
+        // 转换为简化DTO列表返回
+        return ProjectAssembler.toSimpleDTOList(projectEntities);
     }
 
     /**
@@ -291,6 +308,7 @@ public class ProjectServiceImpl extends ServiceImpl<ProjectMapper, ProjectEntity
     /**
      * 根据项目ID获取项目名称
      */
+    @Override
     public String getProjectNameById(String projectId) {
         logger.debug("根据项目ID获取项目名称: {}", projectId);
         

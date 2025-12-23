@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * 亲和性服务
  * 负责管理亲和性绑定关系
  *
- * @author xhy
+ * @author fanofacane
  * @since 1.0.0
  */
 @Service

@@ -2,6 +2,8 @@ package com.sky.modelapigateway.controller;
 
 import com.sky.modelapigateway.domain.ApiInstanceDTO;
 import com.sky.modelapigateway.domain.Result;
+import com.sky.modelapigateway.domain.request.ApiInstanceBatchCreateRequest;
+import com.sky.modelapigateway.domain.request.ApiInstanceBatchDeleteRequest;
 import com.sky.modelapigateway.domain.request.ApiInstanceCreateRequest;
 import com.sky.modelapigateway.domain.request.ApiInstanceUpdateRequest;
 import com.sky.modelapigateway.enums.ApiType;
@@ -11,6 +13,7 @@ import com.sky.modelapigateway.tool.ApiContext;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -56,7 +59,37 @@ public class ApiInstanceController {
         ApiInstanceDTO result = apiInstanceAppService.createApiInstance(request,projectId);
         return Result.success("API实例创建成功", result);
     }
+    /**
+     * 批量创建API实例
+     * 使用方通过API Key批量创建新的API实例
+     */
+    @PostMapping("/batch")
+    public Result<List<ApiInstanceDTO>> batchCreateApiInstances(@Validated @RequestBody ApiInstanceBatchCreateRequest request) {
+        logger.info("接收到批量创建API实例请求，实例数量: {}", request.getInstances().size());
+        String projectId = ApiContext.getProjectId();
+        projectService.validateProjectExists(projectId);
 
+        List<ApiInstanceDTO> result = apiInstanceAppService.batchCreateApiInstances(request.getInstances(),projectId);
+
+        logger.info("批量API实例创建成功，创建数量: {}", result.size());
+        return Result.success("批量API实例创建成功", result);
+    }
+
+    /**
+     * 批量删除API实例
+     * 使用方通过API Key批量删除不再需要的API实例
+     */
+    @DeleteMapping("/batch")
+    public Result<Integer> batchDeleteApiInstances(@Validated @RequestBody ApiInstanceBatchDeleteRequest request) {
+        String projectId = ApiContext.getProjectId();
+        projectService.validateProjectExists(projectId);
+        logger.info("接收到批量删除API实例请求，项目ID: {}，删除数量: {}", projectId, request.getInstances().size());
+
+        int deletedCount = apiInstanceAppService.batchDeleteApiInstances(projectId, request.getInstances());
+
+        logger.info("批量API实例删除成功，删除数量: {}", deletedCount);
+        return Result.success("批量API实例删除成功", deletedCount);
+    }
     /**
      * 更新API实例
      * 使用方更新已有的API实例配置

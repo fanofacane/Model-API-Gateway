@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 
 /**
  * MyBatis Plus 配置类
- *
  * @author fanofacane
  * @since 1.0.0
  */
