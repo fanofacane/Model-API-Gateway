@@ -44,7 +44,8 @@ public class ApiInstanceServiceImpl extends ServiceImpl<ApiInstanceMapper, ApiIn
     }
     @Override
     public List<ApiInstanceEntity> findCandidateInstances(InstanceSelectionCommand command) {
-        LambdaQueryChainWrapper<ApiInstanceEntity> wrapper = lambdaQuery().eq(ApiInstanceEntity::getProjectId, command.getProjectId())
+        LambdaQueryChainWrapper<ApiInstanceEntity> wrapper = lambdaQuery()
+                .eq(ApiInstanceEntity::getProjectId, command.getProjectId())
                 .eq(ApiInstanceEntity::getApiType, command.getApiType())
                 .eq(ApiInstanceEntity::getStatus, ApiInstanceStatus.ACTIVE);
         wrapper.and(w->w

@@ -15,3 +15,241 @@
 2025-12-23T10:00:20.832+08:00  INFO 13864 --- [Model-API-Gateway] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/pie'
 2025-12-23T10:00:20.837+08:00  INFO 13864 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Started ModelApiGatewayApplication in 2.221 seconds (process running for 2.798)
 2025-12-23T11:17:08.058+08:00  INFO 13864 --- [Model-API-Gateway] [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2025-12-23T14:10:22.298+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Starting ModelApiGatewayApplication using Java 21.0.4 with PID 5616 (D:\software\GitProject\Model-API-Gateway\target\classes started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-23T14:10:22.299+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-23T14:10:23.163+08:00  INFO 5616 --- [Model-API-Gateway] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8082 (http)
+2025-12-23T14:10:23.175+08:00  INFO 5616 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-23T14:10:23.176+08:00  INFO 5616 --- [Model-API-Gateway] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.25]
+2025-12-23T14:10:23.227+08:00  INFO 5616 --- [Model-API-Gateway] [main] o.a.c.c.C.[Tomcat].[localhost].[/pie]    : Initializing Spring embedded WebApplicationContext
+2025-12-23T14:10:23.228+08:00  INFO 5616 --- [Model-API-Gateway] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 892 ms
+2025-12-23T14:10:23.603+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-23T14:10:23.603+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-23T14:10:23.604+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-23T14:10:23.604+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-23T14:10:23.604+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-23T14:10:23.605+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-23T14:10:23.788+08:00  INFO 5616 --- [Model-API-Gateway] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-12-23T14:10:24.046+08:00  INFO 5616 --- [Model-API-Gateway] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8082 (http) with context path '/pie'
+2025-12-23T14:10:24.051+08:00  INFO 5616 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplication         : Started ModelApiGatewayApplication in 2.136 seconds (process running for 2.672)
+2025-12-23T14:10:28.874+08:00  INFO 5616 --- [Model-API-Gateway] [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2025-12-23T14:10:49.764+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplicationTests    : Starting ModelApiGatewayApplicationTests using Java 21.0.4 with PID 18368 (started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-23T14:10:49.765+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2025-12-23T14:10:51.015+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-23T14:10:51.016+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-23T14:10:51.017+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-23T14:10:51.018+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-23T14:10:51.018+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-23T14:10:51.018+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-23T14:10:51.420+08:00  INFO 18368 --- [Model-API-Gateway] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-12-23T14:10:51.716+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.ModelApiGatewayApplicationTests    : Started ModelApiGatewayApplicationTests in 2.228 seconds (process running for 3.042)
+2025-12-23T14:10:52.530+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.sky.modelapigateway.TestDataGenerator  : Starting TestDataGenerator using Java 21.0.4 with PID 18368 (started by W71one in D:\software\GitProject\Model-API-Gateway)
+2025-12-23T14:10:52.530+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.sky.modelapigateway.TestDataGenerator  : The following 1 profile is active: "test"
+2025-12-23T14:10:52.771+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 开始初始化负载均衡策略...
+2025-12-23T14:10:52.772+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: latency_first -> LatencyFirstStrategy
+2025-12-23T14:10:52.772+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: round_robin -> RoundRobinStrategy
+2025-12-23T14:10:52.772+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: smart -> SmartStrategy
+2025-12-23T14:10:52.772+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 注册负载均衡策略: success_rate_first -> SuccessRateFirstStrategy
+2025-12-23T14:10:52.772+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.LoadBalancingStrategyFactory     : 负载均衡策略初始化完成，共注册 4 个策略
+2025-12-23T14:10:52.881+08:00  INFO 18368 --- [Model-API-Gateway] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-12-23T14:10:52.947+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.sky.modelapigateway.TestDataGenerator  : Started TestDataGenerator in 0.446 seconds (process running for 4.272)
+2025-12-23T14:10:53.104+08:00  INFO 18368 --- [Model-API-Gateway] [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2025-12-23T14:10:53.329+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.329+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=500, errorMessage='null', errorType='null', callTimestamp=1766470253323}
+2025-12-23T14:10:53.400+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.400+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.402+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.402+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=550, errorMessage='null', errorType='null', callTimestamp=1766470253402}
+2025-12-23T14:10:53.425+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.426+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.426+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.427+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=600, errorMessage='null', errorType='null', callTimestamp=1766470253426}
+2025-12-23T14:10:53.431+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.432+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.432+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.433+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=650, errorMessage='null', errorType='null', callTimestamp=1766470253432}
+2025-12-23T14:10:53.436+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.436+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.437+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.437+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=700, errorMessage='null', errorType='null', callTimestamp=1766470253437}
+2025-12-23T14:10:53.441+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.441+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.442+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.442+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=750, errorMessage='null', errorType='null', callTimestamp=1766470253442}
+2025-12-23T14:10:53.445+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.445+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.446+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.446+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=800, errorMessage='null', errorType='null', callTimestamp=1766470253446}
+2025-12-23T14:10:53.449+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.449+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.450+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.450+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=850, errorMessage='null', errorType='null', callTimestamp=1766470253450}
+2025-12-23T14:10:53.453+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.453+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.454+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.454+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=900, errorMessage='null', errorType='null', callTimestamp=1766470253454}
+2025-12-23T14:10:53.456+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.457+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.457+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.457+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=950, errorMessage='null', errorType='null', callTimestamp=1766470253457}
+2025-12-23T14:10:53.461+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.461+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.462+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.462+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1000, errorMessage='null', errorType='null', callTimestamp=1766470253462}
+2025-12-23T14:10:53.465+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.465+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.466+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.466+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1050, errorMessage='null', errorType='null', callTimestamp=1766470253466}
+2025-12-23T14:10:53.469+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.469+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.470+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.470+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1100, errorMessage='null', errorType='null', callTimestamp=1766470253470}
+2025-12-23T14:10:53.473+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.473+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.474+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.474+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1150, errorMessage='null', errorType='null', callTimestamp=1766470253474}
+2025-12-23T14:10:53.477+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.477+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.477+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.477+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1200, errorMessage='null', errorType='null', callTimestamp=1766470253477}
+2025-12-23T14:10:53.480+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.480+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.481+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.481+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1250, errorMessage='null', errorType='null', callTimestamp=1766470253481}
+2025-12-23T14:10:53.483+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.483+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.484+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.485+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1300, errorMessage='null', errorType='null', callTimestamp=1766470253484}
+2025-12-23T14:10:53.489+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.489+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.490+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=true
+2025-12-23T14:10:53.490+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=true, latencyMs=1350, errorMessage='null', errorType='null', callTimestamp=1766470253490}
+2025-12-23T14:10:53.494+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.495+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.495+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=false
+2025-12-23T14:10:53.495+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=false, latencyMs=1000, errorMessage='轻微错误', errorType='RETRY_ERROR', callTimestamp=1766470253495}
+2025-12-23T14:10:53.497+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.497+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.498+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be, success=false
+2025-12-23T14:10:53.498+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='61e6e7c13d726ea9f7e8b5e0e2ac68be', success=false, latencyMs=1000, errorMessage='轻微错误', errorType='RETRY_ERROR', callTimestamp=1766470253498}
+2025-12-23T14:10:53.501+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=61e6e7c13d726ea9f7e8b5e0e2ac68be
+2025-12-23T14:10:53.501+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.501+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=true
+2025-12-23T14:10:53.501+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=true, latencyMs=800, errorMessage='null', errorType='null', callTimestamp=1766470253501}
+2025-12-23T14:10:53.503+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.504+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.504+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=true
+2025-12-23T14:10:53.504+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=true, latencyMs=800, errorMessage='null', errorType='null', callTimestamp=1766470253504}
+2025-12-23T14:10:53.506+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.506+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.507+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=true
+2025-12-23T14:10:53.507+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=true, latencyMs=800, errorMessage='null', errorType='null', callTimestamp=1766470253507}
+2025-12-23T14:10:53.510+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.510+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.510+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.511+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253510}
+2025-12-23T14:10:53.513+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.513+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.513+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.513+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253513}
+2025-12-23T14:10:53.515+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.516+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.516+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.516+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253516}
+2025-12-23T14:10:53.518+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.518+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.518+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.518+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253518}
+2025-12-23T14:10:53.521+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.522+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.522+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.522+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253522}
+2025-12-23T14:10:53.524+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.525+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.525+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.525+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253525}
+2025-12-23T14:10:53.527+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.527+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.527+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.527+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253527}
+2025-12-23T14:10:53.529+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例错误率过高，触发熔断: instanceId=a46f586f97367ec6326b4495850ee3a3, successRate=0.3, totalCalls=10
+2025-12-23T14:10:53.529+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.529+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.529+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.529+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253529}
+2025-12-23T14:10:53.531+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例错误率过高，触发熔断: instanceId=a46f586f97367ec6326b4495850ee3a3, successRate=0.2727272727272727, totalCalls=11
+2025-12-23T14:10:53.533+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.533+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.533+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.533+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253533}
+2025-12-23T14:10:53.536+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例错误率过高，触发熔断: instanceId=a46f586f97367ec6326b4495850ee3a3, successRate=0.25, totalCalls=12
+2025-12-23T14:10:53.537+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.537+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.538+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.538+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253538}
+2025-12-23T14:10:53.539+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例错误率过高，触发熔断: instanceId=a46f586f97367ec6326b4495850ee3a3, successRate=0.23076923076923078, totalCalls=13
+2025-12-23T14:10:53.540+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.540+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.541+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.542+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253541}
+2025-12-23T14:10:53.543+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例错误率过高，触发熔断: instanceId=a46f586f97367ec6326b4495850ee3a3, successRate=0.21428571428571427, totalCalls=14
+2025-12-23T14:10:53.544+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.544+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.544+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=a46f586f97367ec6326b4495850ee3a3, success=false
+2025-12-23T14:10:53.544+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='a46f586f97367ec6326b4495850ee3a3', success=false, latencyMs=5000, errorMessage='服务不可用', errorType='SERVICE_ERROR', callTimestamp=1766470253544}
+2025-12-23T14:10:53.545+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例错误率过高，触发熔断: instanceId=a46f586f97367ec6326b4495850ee3a3, successRate=0.2, totalCalls=15
+2025-12-23T14:10:53.546+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=a46f586f97367ec6326b4495850ee3a3
+2025-12-23T14:10:53.546+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.546+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.546+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=6000, errorMessage='null', errorType='null', callTimestamp=1766470253546}
+2025-12-23T14:10:53.548+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.548+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.548+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.548+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=6200, errorMessage='null', errorType='null', callTimestamp=1766470253548}
+2025-12-23T14:10:53.550+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.550+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.551+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.551+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=6400, errorMessage='null', errorType='null', callTimestamp=1766470253551}
+2025-12-23T14:10:53.552+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.552+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.553+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.553+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=6600, errorMessage='null', errorType='null', callTimestamp=1766470253553}
+2025-12-23T14:10:53.555+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.555+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.555+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.555+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=6800, errorMessage='null', errorType='null', callTimestamp=1766470253555}
+2025-12-23T14:10:53.557+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.557+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.557+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.557+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=7000, errorMessage='null', errorType='null', callTimestamp=1766470253557}
+2025-12-23T14:10:53.559+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.559+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.560+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.560+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=7200, errorMessage='null', errorType='null', callTimestamp=1766470253560}
+2025-12-23T14:10:53.561+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.562+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.562+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.562+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=7400, errorMessage='null', errorType='null', callTimestamp=1766470253562}
+2025-12-23T14:10:53.565+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.565+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.565+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.565+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=7600, errorMessage='null', errorType='null', callTimestamp=1766470253565}
+2025-12-23T14:10:53.567+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.567+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.567+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.567+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=7800, errorMessage='null', errorType='null', callTimestamp=1766470253567}
+2025-12-23T14:10:53.569+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例延迟过高，标记为降级: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, avgLatency=6900.0ms
+2025-12-23T14:10:53.570+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.570+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.571+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.571+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=8000, errorMessage='null', errorType='null', callTimestamp=1766470253571}
+2025-12-23T14:10:53.573+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例延迟过高，标记为降级: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, avgLatency=7000.0ms
+2025-12-23T14:10:53.574+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.574+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.574+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层开始处理调用结果上报: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, success=true
+2025-12-23T14:10:53.575+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 开始记录调用结果: CallResultCommand{instanceId='b90d75fe88ebc0498d79ffb9f76ab422', success=true, latencyMs=8200, errorMessage='null', errorType='null', callTimestamp=1766470253574}
+2025-12-23T14:10:53.576+08:00  WARN 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 实例延迟过高，标记为降级: instanceId=b90d75fe88ebc0498d79ffb9f76ab422, avgLatency=7100.0ms
+2025-12-23T14:10:53.577+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.s.metrics.Impl.MetricsServiceImpl  : 调用结果记录完成: instanceId=b90d75fe88ebc0498d79ffb9f76ab422
+2025-12-23T14:10:53.577+08:00  INFO 18368 --- [Model-API-Gateway] [main] c.s.m.service.select.SelectionService    : 应用层调用结果上报处理完成
+2025-12-23T14:10:53.597+08:00  INFO 18368 --- [Model-API-Gateway] [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-0} closing ...
+2025-12-23T14:10:53.599+08:00  INFO 18368 --- [Model-API-Gateway] [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2025-12-23T14:10:53.601+08:00  INFO 18368 --- [Model-API-Gateway] [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

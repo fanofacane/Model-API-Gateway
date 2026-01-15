@@ -137,6 +137,7 @@ public class SelectionServiceImpl implements SelectionService {
         // 1. 验证项目存在
         projectService.validateProjectExists(currentProjectId);
         LbActiveStrategy strategy = activeStrategyService.lambdaQuery().last("limit 1").one();
+
         // 2. 应用层通过Assembler将Request对象转换成领域命令对象
         InstanceSelectionCommand command = SelectionAssembler.toCommand(request, currentProjectId,strategy.getStrategyType());
 
@@ -147,6 +148,7 @@ public class SelectionServiceImpl implements SelectionService {
         List<String> instanceIds = candidates.stream().map(ApiInstanceEntity::getId).collect(Collectors.toList());
         Map<String, InstanceMetricsEntity> metricsMap = metricsService.getInstanceMetrics(instanceIds);
 
+        // todo 应该删除判空，而是抛出异常让降级链去找模型 这里为了测试方便
         if (metricsMap.isEmpty()) return ApiInstanceAssembler.toDTO(candidates.getFirst());
         // 5. 过滤掉被熔断的实例
         List<ApiInstanceEntity> healthyInstances = apiInstanceService.filterHealthyInstances(candidates, metricsMap);
@@ -158,8 +160,8 @@ public class SelectionServiceImpl implements SelectionService {
         // 7. 转换为DTO返回
         ApiInstanceDTO result = ApiInstanceAssembler.toDTO(selectedEntity);
 
-        logger.info("应用层选择API实例成功: businessId={}, instanceId={}",
-                result.getBusinessId(), result.getId());
+        logger.info("应用层选择API实例成功: businessId={}, instanceId={}", result.getBusinessId(), result.getId());
+
         return result;
     }
 }

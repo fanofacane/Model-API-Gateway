@@ -13,7 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,6 +25,7 @@ import static com.sky.modelapigateway.domain.Instance.SelectionConstants.*;
 @Service
 public class MetricsServiceImpl extends ServiceImpl<MetricsMapper, InstanceMetricsEntity> implements MetricsService {
     private static final Logger logger = LoggerFactory.getLogger(MetricsServiceImpl.class);
+
     @Override
     public Map<String, InstanceMetricsEntity> getInstanceMetrics(List<String> instanceIds) {
         if (instanceIds == null || instanceIds.isEmpty()) return Map.of();
@@ -31,14 +34,13 @@ public class MetricsServiceImpl extends ServiceImpl<MetricsMapper, InstanceMetri
                 .orderByDesc(InstanceMetricsEntity::getTimestampWindow)
                 .last("limit 10").list();
         logger.debug("查询到 {} 条指标数据，实例ID数量: {}", metricsList.size(), instanceIds.size());
-        if (metricsList.isEmpty())  return Map.of();
-        return metricsList.stream()
-                .collect(Collectors.toMap(
+        if (metricsList.isEmpty()) return Map.of();
+
+        return metricsList.stream().collect(Collectors.toMap(
                         InstanceMetricsEntity::getRegistryId,
-                        metrics -> metrics,
-                        (existing, replacement)->
-                                existing.getTimestampWindow().isAfter(replacement.getTimestampWindow())
-                                        ? existing : replacement));
+                        metrics -> metrics, (existing, replacement) ->
+                        existing.getTimestampWindow()
+                                .isAfter(replacement.getTimestampWindow()) ? existing : replacement));
     }
 
     @Override
@@ -46,12 +48,11 @@ public class MetricsServiceImpl extends ServiceImpl<MetricsMapper, InstanceMetri
 
         logger.info("开始记录调用结果: {}", command);
 
-        // 获取或创建当前时间窗口的指标记录
-        LocalDateTime currentWindow = getCurrentTimeWindow();
+        LocalDateTime currentWindow = getCurrentTimeWindow(command.getCallTimestamp());
         InstanceMetricsEntity metrics = getOrCreateMetrics(command.getInstanceId(), currentWindow);
 
         // 更新指标
-        updateMetrics(metrics, command.getSuccess(), command.getLatencyMs(), command.getUsageMetrics());
+        updateMetrics(metrics, command.getSuccess(), command.getLatencyMs());
 
         // 更新Gateway状态
         updateGatewayStatus(metrics);
@@ -61,6 +62,7 @@ public class MetricsServiceImpl extends ServiceImpl<MetricsMapper, InstanceMetri
         logger.debug("更新指标记录: instanceId={}, window={}", command.getInstanceId(), currentWindow);
         logger.info("调用结果记录完成: instanceId={}", command.getInstanceId());
     }
+
     /**
      * 更新Gateway状态
      * 根据当前指标判断实例健康状况
@@ -96,8 +98,7 @@ public class MetricsServiceImpl extends ServiceImpl<MetricsMapper, InstanceMetri
         metrics.updateGatewayStatus(GatewayStatus.HEALTHY);
     }
 
-    private void updateMetrics(InstanceMetricsEntity metrics, Boolean success, Long latencyMs,
-                               Map<String, Object> usageMetrics) {
+    private void updateMetrics(InstanceMetricsEntity metrics, Boolean success, Long latencyMs) {
 
         if (success) {
             metrics.setSuccessCount(metrics.getSuccessCount() + 1);
@@ -107,50 +108,38 @@ public class MetricsServiceImpl extends ServiceImpl<MetricsMapper, InstanceMetri
 
         // 累计延迟
         metrics.setTotalLatencyMs(metrics.getTotalLatencyMs() + latencyMs);
-
-        // 合并使用指标
-        if (usageMetrics != null && !usageMetrics.isEmpty()) {
-            Map<String, Object> existingMetrics = metrics.getAdditionalMetrics();
-            if (existingMetrics == null) {
-                metrics.setAdditionalMetrics(usageMetrics);
-            } else {
-                // 合并指标数据
-                existingMetrics.putAll(usageMetrics);
-                metrics.setAdditionalMetrics(existingMetrics);
-            }
-        }
     }
 
-    /**
-     * 获取或创建指标记录
-     */
     private synchronized InstanceMetricsEntity getOrCreateMetrics(String instanceId, LocalDateTime timeWindow) {
-        LambdaQueryWrapper<InstanceMetricsEntity> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(InstanceMetricsEntity::getRegistryId, instanceId)
-                .eq(InstanceMetricsEntity::getTimestampWindow, timeWindow);
-        InstanceMetricsEntity metrics = lambdaQuery().eq(InstanceMetricsEntity::getRegistryId, instanceId)
+        InstanceMetricsEntity metrics = lambdaQuery()
+                .eq(InstanceMetricsEntity::getRegistryId, instanceId)
                 .eq(InstanceMetricsEntity::getTimestampWindow, timeWindow)
-                .last("limit 1").one();
+                .last("limit 1")
+                .one();
+
+        LocalDateTime now = LocalDateTime.now();
 
         if (metrics == null) {
-            // 创建新的指标记录
             metrics = new InstanceMetricsEntity();
             metrics.setRegistryId(instanceId);
             metrics.setTimestampWindow(timeWindow);
-            metrics.setLastReportedAt(LocalDateTime.now());
+            metrics.setLastReportedAt(now);
         } else {
-            // 更新最后上报时间
-            metrics.setLastReportedAt(LocalDateTime.now());
+            metrics.setLastReportedAt(now);
         }
 
         return metrics;
     }
-    /**
-     * 获取当前时间窗口
-     * 按分钟截断，例如 2024-01-01 14:30:00
-     */
-    private LocalDateTime getCurrentTimeWindow() {
-        LocalDateTime now = LocalDateTime.now();
-        return now.withSecond(0).withNano(0);
+
+    private LocalDateTime getCurrentTimeWindow(Long callTimestamp) {
+        LocalDateTime time;
+        if (callTimestamp != null) {
+            time = LocalDateTime.ofInstant(Instant.ofEpochMilli(callTimestamp), ZoneId.systemDefault());
+        } else {
+            time = LocalDateTime.now();
+        }
+        int minute = time.getMinute();
+        int windowMinute = (minute / 30) * 30;
+        return time.withMinute(windowMinute).withSecond(0).withNano(0);
     }
 }
